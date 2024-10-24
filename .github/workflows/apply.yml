@@ -1,9 +1,6 @@
-name: 'Terraform'
+name: 'Apply'
 
-on:
-  push:
-    branches: [ 'main' ]
-  pull_request:
+on: workflow_dispatch
 
 permissions:
   id-token: write
@@ -48,3 +45,6 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
       
+    # Applies the changes required to reach the desired state of the configuration
+    - name: Terraform Apply
+      run: terraform apply -input=false -auto-approve
